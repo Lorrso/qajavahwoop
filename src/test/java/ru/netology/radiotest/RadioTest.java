@@ -4,15 +4,55 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Assertions;
 
-import org.junit.jupiter.params.ParameterizedTest;
 import ru.netology.radio.Radio;
 
 public class RadioTest {
+    Radio radio = new Radio();
 
     @Test
-    public void getStation() {
-        Radio radio = new Radio();
+    public void getMinStation() {
+        int expected = 0;
+        int actual = radio.getMinStation();
 
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMaxStation() {
+        int expected = 9;
+        int actual = radio.getMaxStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMinVolume() {
+        int expected = 0;
+        int actual = radio.getMinVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMaxVolume() {
+        int expected = 100;
+        int actual = radio.getMaxVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setNewSizeStation() {
+        Radio radio = new Radio(16);
+
+        int expected = 15;
+        int actual = radio.getMaxStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCurrentStation() {
         radio.setCurrentStation(8);
 
         int expected = 8;
@@ -23,8 +63,6 @@ public class RadioTest {
 
     @Test
     public void setNewStationUpperLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(12);
 
         int expected = 0;
@@ -35,8 +73,6 @@ public class RadioTest {
 
     @Test
     public void setNewStationUnderLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(-1);
 
         int expected = 0;
@@ -47,8 +83,6 @@ public class RadioTest {
 
     @Test
     public void getNextStationUpperLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(9);
         radio.getNextStation();
 
@@ -60,8 +94,6 @@ public class RadioTest {
 
     @Test
     public void getNextStation() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(6);
         radio.getNextStation();
 
@@ -73,8 +105,6 @@ public class RadioTest {
 
     @Test
     public void getPrevStationUnderLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(0);
         radio.getPrevStation();
 
@@ -86,8 +116,6 @@ public class RadioTest {
 
     @Test
     public void getPrevStation() {
-        Radio radio = new Radio();
-
         radio.setCurrentStation(6);
         radio.getPrevStation();
 
@@ -99,8 +127,6 @@ public class RadioTest {
 
     @Test
     public void getVolume() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(50);
 
         int expected = 50;
@@ -111,8 +137,6 @@ public class RadioTest {
 
     @Test
     public void setNewVolumeUpperLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(101);
 
         int expected = 0;
@@ -123,8 +147,6 @@ public class RadioTest {
 
     @Test
     public void setNewVolumeUnderLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(-1);
 
         int expected = 0;
@@ -135,8 +157,6 @@ public class RadioTest {
 
     @Test
     public void increaseVolume() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(50);
         radio.increaseVolume();
 
@@ -148,8 +168,6 @@ public class RadioTest {
 
     @Test
     public void increaseVolumeUpperLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(100);
         radio.increaseVolume();
 
@@ -161,8 +179,6 @@ public class RadioTest {
 
     @Test
     public void decreaseVolume() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(50);
         radio.decreaseVolume();
 
@@ -174,8 +190,6 @@ public class RadioTest {
 
     @Test
     public void decreaseVolumeUnderLimit() {
-        Radio radio = new Radio();
-
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
 
